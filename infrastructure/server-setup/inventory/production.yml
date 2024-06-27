@@ -51,6 +51,7 @@ docker-workers:
   hosts:
     markusland-prod-02: # @todo set this to be the hostname of your target server
       ansible_host: '164.92.235.83'
+      data_label: data2
       # If you are using a jump server to access this environment, enter other SSH args here.
       # ansible_ssh_common_args: '-J jump@55.55.55.55 -o StrictHostKeyChecking=no'
 
