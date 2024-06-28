@@ -26,5 +26,5 @@ all:
 
 jump-host:
   hosts:
-    backup: # @todo set this to be the hostname of your backup server
-      ansible_host: '55.55.55.55'
+    markusland-qa: # @todo set this to be the hostname of your jump server
+      ansible_host: '161.35.20.33'
