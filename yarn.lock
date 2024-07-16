@@ -2122,19 +2122,19 @@
   integrity sha512-aWw2YTtAdT7CskFyxEX2K21/zSDStuf/ikI3yBqmwpwJF0pS+/IX5DWv+1UFffZIbruP6cnT9/LAJV1gFwAT1A==
 
 "@types/libsodium-wrappers@^0.7.10":
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/@types/libsodium-wrappers/-/libsodium-wrappers-0.7.13.tgz#769c4ea01de96bb297207586a70777ebf066dcb4"
-  integrity sha512-KeAKtlObirLJk/na6jHBFEdTDjDfFS6Vcr0eG2FjiHKn3Nw8axJFfIu0Y9TpwaauRldQBj/pZm/MHtK76r6OWg==
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/@types/libsodium-wrappers/-/libsodium-wrappers-0.7.14.tgz#f688f8d44e46ed61c401f82ff757581655fbcc42"
+  integrity sha512-5Kv68fXuXK0iDuUir1WPGw2R9fOZUlYlSAa0ztMcL0s0BfIDTqg9GXz8K30VJpPP3sxWhbolnQma2x+/TfkzDQ==
 
 "@types/lodash@^4.14.117":
-  version "4.14.200"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.200.tgz#435b6035c7eba9cdf1e039af8212c9e9281e7149"
-  integrity sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==
+  version "4.17.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.6.tgz#193ced6a40c8006cfc1ca3f4553444fb38f0e543"
+  integrity sha512-OpXEVoCKSS3lQqjx9GGGOapBeuW5eUboYHRlHP9urXPX25IKZ6AnP5ZRxtVf63iieUbsHxLn8NQ5Nlftc6yzAA==
 
 "@types/mime-db@*":
-  version "1.43.3"
-  resolved "https://registry.yarnpkg.com/@types/mime-db/-/mime-db-1.43.3.tgz#f7bec64a9a62ddded3371e82862c0516539710e8"
-  integrity sha512-vg0UsF1p1Qi/8iCARoie7F/Ng92zo7tQlL+sqE15GonkKVl55n/0vB6jSbrYTgDO0PSx9pKfGG1iZg9gJum3wA==
+  version "1.43.5"
+  resolved "https://registry.yarnpkg.com/@types/mime-db/-/mime-db-1.43.5.tgz#7a3f53dc2125a91f4e0e41f1353f60f8b6af609e"
+  integrity sha512-/bfTiIUTNPUBnwnYvUxXAre5MhD88jgagLEQiQtIASjU+bwxd8kS/ASDA4a8ufd8m0Lheu6eeMJHEUpLHoJ28A==
 
 "@types/minimist@^1.2.5":
   version "1.2.5"
@@ -4957,16 +4957,16 @@ levn@^0.4.1:
     type-check "~0.4.0"
 
 libsodium-wrappers@^0.7.13:
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/libsodium-wrappers/-/libsodium-wrappers-0.7.13.tgz#83299e06ee1466057ba0e64e532777d2929b90d3"
-  integrity sha512-kasvDsEi/r1fMzKouIDv7B8I6vNmknXwGiYodErGuESoFTohGSKZplFtVxZqHaoQ217AynyIFgnOVRitpHs0Qw==
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/libsodium-wrappers/-/libsodium-wrappers-0.7.14.tgz#b21d9e8d58de686c6318a772805ee1c5d02035a5"
+  integrity sha512-300TtsePizhJZ7HjLmWr6hLHAgJUxIGhapSw+EwfCtDuWaEmEdGXSQv6j6qFw0bs9l4vS2NH9BtOHfXAq6h5kQ==
   dependencies:
-    libsodium "^0.7.13"
+    libsodium "^0.7.14"
 
-libsodium@^0.7.13:
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/libsodium/-/libsodium-0.7.13.tgz#230712ec0b7447c57b39489c48a4af01985fb393"
-  integrity sha512-mK8ju0fnrKXXfleL53vtp9xiPq5hKM0zbDQtcxQIsSmxNgSxqCj6R7Hl9PkrNe2j29T4yoDaF7DJLK9/i5iWUw==
+libsodium@^0.7.14:
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/libsodium/-/libsodium-0.7.14.tgz#d9daace70dbc36051b947d37999bb6337c364c88"
+  integrity sha512-/pOd7eO6oZrfORquRTC4284OUJFcMi8F3Vnc9xtRBT0teLfOUxWIItaBFF3odYjZ7nlJNwnLdUVEUFHxVyX/Sw==
 
 lines-and-columns@^1.1.6:
   version "1.2.4"
