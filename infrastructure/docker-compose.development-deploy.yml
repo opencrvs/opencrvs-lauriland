@@ -28,7 +28,6 @@ services:
       - SMTP_USERNAME=${SMTP_USERNAME}
       - SMTP_PASSWORD=${SMTP_PASSWORD}
       - SMTP_SECURE=${SMTP_SECURE}
-      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     deploy:
       replicas: 1
     networks:
@@ -100,6 +99,8 @@ services:
       - NODE_ENV=production
 
   traefik:
+    environment:
+      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
     command:
       # Use HTTP-01 challenge as the web server is publicly available
       # https://doc.traefik.io/traefik/https/acme/#httpchallenge
