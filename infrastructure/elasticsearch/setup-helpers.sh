@@ -253,7 +253,9 @@ function create_elastic_index {
 
   echo "${output}"
 
-  if [[ "${output: -3}" -eq 200 || $output == *"resource_already_exists"* ]]; then
+  # @TODO: Preferably check whether the index already exists before creating it.
+  # Error message might change in the future so we should not depend on it.
+  if [[ "${output: -3}" -eq 200 || $output == *"already exists as alias"* ]]; then
     result=0
   fi
 
