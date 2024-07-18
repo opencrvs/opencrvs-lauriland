@@ -107,7 +107,7 @@ services:
       # For DNS-01 challenge and manual certificates, check staging and production configurations
       - --certificatesresolvers.certResolver.acme.dnschallenge=true
       - --certificatesresolvers.certResolver.acme.dnschallenge.provider=cloudflare
-      - --certificatesresolvers.certResolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+      # - --certificatesresolvers.certResolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
       - --certificatesresolvers.certResolver.acme.email=markus@opencrvs.org
       - --certificatesresolvers.certResolver.acme.storage=acme.json
 
