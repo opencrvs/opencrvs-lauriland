@@ -17,6 +17,8 @@ apt-get install curl -y
 
 bash "$(dirname "${BASH_SOURCE[0]}")/setup-users.sh"
 bash "$(dirname "${BASH_SOURCE[0]}")/setup-settings.sh"
+bash "$(dirname "${BASH_SOURCE[0]}")/setup-elastalert-indices.sh"
+
 
 
 
