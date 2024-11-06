@@ -328,6 +328,7 @@ services:
       - FHIR_URL=http://hearth.{{STACK}}_app_net:3447/fhir
       - WEBHOOKS_URL=http://webhooks.{{STACK}}_app_net:2525/
       - APPLICATION_CONFIG_URL=http://config.{{STACK}}_app_net:2021/
+      - AUTH_URL=http://auth.{{STACK}}_app_net:4040
       - COUNTRY=${COUNTRY:-bgd}
     deploy:
       labels:
