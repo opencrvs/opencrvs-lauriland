@@ -11,11 +11,6 @@ services:
     deploy:
       labels:
         - traefik.enable=false
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'redis'
 
   hearth:
     image: opencrvs/hearth:1.1.0
@@ -41,11 +36,6 @@ services:
         aliases: []
       dependencies_mongo_net_1:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'hearth'
 
   notification:
     image: opencrvs/ocrvs-notification:${VERSION}
@@ -71,11 +61,6 @@ services:
         aliases: []
       dependencies_mongo_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'notification'
 
   countryconfig:
     image: ${DOCKERHUB_ACCOUNT}/${DOCKERHUB_REPO}:${COUNTRY_CONFIG_VERSION}
@@ -147,11 +132,6 @@ services:
         aliases: []
       dependencies_mongo_net_3:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'countryconfig'
 
   login:
     image: opencrvs/ocrvs-login:${VERSION}
@@ -186,11 +166,6 @@ services:
         aliases: []
       dependencies_traefik_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'login'
 
   client:
     image: opencrvs/ocrvs-client:${VERSION}
@@ -231,11 +206,6 @@ services:
         aliases: []
       dependencies_traefik_net_1:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'client'
 
   gateway:
     image: opencrvs/ocrvs-gateway:${VERSION}
@@ -300,11 +270,6 @@ services:
         aliases: []
       dependencies_minio_net:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'gateway'
 
   workflow:
     image: opencrvs/ocrvs-workflow:${VERSION}
@@ -338,11 +303,6 @@ services:
       app_net:
       dependencies_monitoring_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'workflow'
 
   search:
     image: opencrvs/ocrvs-search:${VERSION}
@@ -373,11 +333,7 @@ services:
         aliases: []
       dependencies_mongo_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'search'
+
   setup-elasticsearch-users:
     image: ubuntu:bionic
     entrypoint: ['bash', '/usr/app/setup.sh']
@@ -407,11 +363,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'setup-elasticsearch-users'
 
   metrics:
     image: opencrvs/ocrvs-metrics:${VERSION}
@@ -455,11 +406,6 @@ services:
         aliases: []
       dependencies_elasticsearch_net:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'metrics'
 
   auth:
     image: opencrvs/ocrvs-auth:${VERSION}
@@ -508,11 +454,6 @@ services:
         aliases: []
       dependencies_traefik_net_1:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'auth'
 
   user-mgnt:
     image: opencrvs/ocrvs-user-mgnt:${VERSION}
@@ -543,11 +484,6 @@ services:
         aliases: []
       dependencies_mongo_net_1:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'user-mgnt'
 
   webhooks:
     image: opencrvs/ocrvs-webhooks:${VERSION}
@@ -592,11 +528,6 @@ services:
         aliases: []
       dependencies_traefik_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'webhooks'
 
   config:
     image: opencrvs/ocrvs-config:${VERSION}
@@ -651,11 +582,6 @@ services:
         aliases: []
       dependencies_traefik_net_1:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'config'
 
   documents:
     image: opencrvs/ocrvs-documents:${VERSION}
@@ -684,11 +610,6 @@ services:
         aliases: []
       dependencies_minio_net:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'documents'
 
   scheduler:
     image: opencrvs/ocrvs-scheduler:${VERSION}
@@ -704,11 +625,6 @@ services:
       app_net:
       dependencies_monitoring_net_3:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'scheduler'
 
   migration:
     image: opencrvs/ocrvs-migration:${VERSION}
@@ -753,11 +669,7 @@ services:
         aliases: []
       dependencies_elasticsearch_net:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'migration'
+
   mongo-on-update:
     image: mongo:4.4
     command: bash /on-deploy.sh
@@ -791,11 +703,6 @@ services:
         aliases: []
       dependencies_mongo_net_2:
         aliases: []
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'mongo-on-update'
 
 secrets:
   jwt-public-key.{{STACK}}.{{ts}}:

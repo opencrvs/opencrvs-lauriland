@@ -56,11 +56,6 @@ services:
           - node.role == manager
     environment:
       - CF_DNS_API_TOKEN=${CLOUDFLARE_API_TOKEN}
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'traefik'
 
   filebeat:
     image: docker.elastic.co/beats/filebeat:8.14.3
@@ -122,11 +117,6 @@ services:
         target: /usr/share/metricbeat/metricbeat.yml
       - source: beat-rollover-policy.{{ts}}
         target: /usr/share/metricbeat/rollover-policy.json
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'metricbeat'
   setup-kibana-config:
     image: curlimages/curl:7.88.1
     networks:
@@ -156,11 +146,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'setup-kibana-config'
   kibana:
     image: docker.elastic.co/kibana/kibana:8.14.3
     networks:
@@ -186,11 +171,6 @@ services:
     configs:
       - source: kibana.{{ts}}
         target: /usr/share/kibana/config/kibana.yml
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'kibana'
   # Configure mongo nodes as a replica set
   mongo1:
     image: mongo:4.4
@@ -224,12 +204,6 @@ services:
         constraints:
           - node.labels.data1 == true
 
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'mongo1'
-
   # Configure elasticsearch
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.14.3
@@ -262,12 +236,6 @@ services:
       - discovery.type=single-node
       - xpack.security.enabled=true
       - xpack.security.authc.api_key.enabled=true
-
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'elasticsearch'
 
   # Configure elasticsearch
   minio:
@@ -327,11 +295,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'minio'
 
   elastalert:
     image: jertel/elastalert2:2.19.0
@@ -352,11 +315,6 @@ services:
       placement:
         constraints:
           - node.role == manager
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'elastalert'
 
   logstash:
     image: logstash:8.14.3
@@ -418,11 +376,6 @@ services:
     configs:
       - source: apm.{{ts}}
         target: /usr/share/apm-server/apm-server.yml
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'apm-server'
   # Configure influxdb
   influxdb:
     image: influxdb:1.8.10
@@ -442,12 +395,6 @@ services:
     configs:
       - source: influxdb-conf.{{ts}}
         target: /etc/influxdb/influxdb.conf
-
-    logging:
-      driver: gelf
-      options:
-        gelf-address: 'udp://127.0.0.1:12201'
-        tag: 'influxdb'
 
 configs:
   hearth-check-dupe-plugin.{{ts}}:
