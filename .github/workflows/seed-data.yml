@@ -50,6 +50,7 @@ jobs:
 
       - name: Remove other package directories
         run: |
+          cd ./opencrvs-core
           for dir in packages/*; do
             if [ "$dir" != "packages/data-seeder" ] && [ "$dir" != "packages/commons" ]; then
               echo "Removing $dir"
