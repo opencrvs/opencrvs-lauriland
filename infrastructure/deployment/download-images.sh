@@ -9,6 +9,10 @@
 #!/bin/bash
 set -e
 
+BASEDIR=$(dirname $(realpath $0))
+INFRASTRUCTURE_DIRECTORY=$(dirname $BASEDIR)
+PROJECT_ROOT=$(pwd)
+
 # Reading Names parameters
 for i in "$@"; do
     case $i in
