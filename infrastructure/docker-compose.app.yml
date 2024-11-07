@@ -494,6 +494,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
+      - CERT_PRIVATE_KEY_PATH="THIS IS NOT EVEN USED ANYWHERE @todo"
       - REDIS_HOST=redis.${STACK}_app_net
       - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - MONGO_URL=mongodb://${STACK}__webhooks:${WEBHOOKS_MONGODB_PASSWORD}@mongo1/${STACK}__webhooks?replicaSet=rs0
