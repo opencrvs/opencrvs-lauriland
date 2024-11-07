@@ -60,7 +60,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./opencrvs-core
-        run: CI="" yarn install --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Seed data on given environment
         uses: nick-fields/retry@v2
