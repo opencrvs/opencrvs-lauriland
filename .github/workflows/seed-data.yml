@@ -48,14 +48,19 @@ jobs:
           cd opencrvs-core
           git checkout ${{ inputs.core-image-tag }}
 
-      # copy ./opencrvs-core/packages/data-seeder to a new temporary directory
-      - name: Copy data-seeder
+      - name: Remove other package directories
         run: |
-          cp -r ./opencrvs-core/packages/data-seeder ./data-seeder
+          cd ./opencrvs-core
+          for dir in packages/*; do
+            if [ "$dir" != "packages/data-seeder" ] && [ "$dir" != "packages/commons" ]; then
+              echo "Removing $dir"
+              rm -rf "$dir"
+            fi
+          done
 
       - name: Install dependencies
-        working-directory: ./data-seeder
-        run: yarn install
+        working-directory: ./opencrvs-core
+        run: yarn install --frozen-lockfile
 
       - name: Seed data on given environment
         uses: nick-fields/retry@v2
@@ -64,8 +69,8 @@ jobs:
           timeout_minutes: 10
           max_attempts: 5
           command: |
-            cd ./data-seeder
-            NODE_OPTIONS=--dns-result-order=ipv4first npx ts-node --transpile-only -r tsconfig-paths/register src/index.ts
+            cd ./opencrvs-core
+            yarn seed:prod
         env:
           ACTIVATE_USERS: ${{ vars.ACTIVATE_USERS }}
           GATEWAY_HOST: 'https://gateway.${{inputs.stack}}.opencrvs.dev'
