@@ -85,6 +85,8 @@ configured_ssh() {
 # Pulling Docker images based on the `UPDATE_DEPENDENCIES` flag
 if [ "$UPDATE_DEPENDENCIES" = false ]; then
   IMAGE_TAGS_TO_DOWNLOAD=$(get_docker_tags_from_compose_files "$APPLICATION_COMPOSE_FILES")
+  echo "Downloading application images only"
+  echo "$IMAGE_TAGS_TO_DOWNLOAD"
 else
   IMAGE_TAGS_TO_DOWNLOAD=$(get_docker_tags_from_compose_files "$DEPENDENCY_COMPOSE_FILES")
 fi
