@@ -57,7 +57,7 @@ services:
       - NODE_ENV=production
       - LANGUAGES=en,fr
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - MONGO_URL=mongodb://${STACK}__notification:${NOTIFICATION_MONGODB_PASSWORD}@mongo1/${STACK}__notification?replicaSet=rs0
       - COUNTRY_CONFIG_URL=http://countryconfig.{{STACK}}_app_net:3040
@@ -120,7 +120,7 @@ services:
       - CONFIRM_REGISTRATION_URL=http://workflow.{{STACK}}_app_net:5050/confirm/registration
       - MONGO_URL=mongodb://mongo1/${STACK}__user-mgnt?replicaSet=rs0
       - CONFIG_MONGO_URL=mongodb://mongo1/${STACK}__application-config?replicaSet=rs0
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - COUNTRY_CONFIG_URL=https://countryconfig.${STACK}.{{hostname}}
       - LOGIN_URL=https://login.${STACK}.{{hostname}}
       - CLIENT_APP_URL=https://register.${STACK}.{{hostname}}
@@ -250,7 +250,7 @@ services:
       - SENTRY_DSN=${SENTRY_DSN:-}
       - DISABLE_RATE_LIMIT=true
       - REDIS_HOST=redis.${STACK}_app_net
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - LOGIN_URL=https://login.${STACK}.{{hostname}}
       - CLIENT_APP_URL=https://register.${STACK}.{{hostname}}
@@ -317,7 +317,7 @@ services:
       - NODE_ENV=production
       - LANGUAGES=en,fr
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - SEARCH_URL=http://search.{{STACK}}_app_net:9090/
       - METRICS_URL=http://metrics.{{STACK}}_app_net:1050
@@ -355,7 +355,7 @@ services:
       - SENTRY_DSN=${SENTRY_DSN:-}
       - OPENCRVS_INDEX_NAME=ocrvs--${STACK}
       - ES_HOST={{STACK}}-search-user:${ROTATING_SEARCH_ELASTIC_PASSWORD}@elasticsearch:9200
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - HEARTH_MONGO_URL=mongodb://${STACK}__hearth:${HEARTH_MONGODB_PASSWORD}@mongo1/${STACK}__hearth-dev?replicaSet=rs0
       - USER_MANAGEMENT_URL=http://user-mgnt.{{STACK}}_app_net:3030/
@@ -424,7 +424,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - MONGO_URL=mongodb://${STACK}__metrics:${METRICS_MONGODB_PASSWORD}@mongo1/${STACK}__metrics?replicaSet=rs0
       - HEARTH_MONGO_URL=mongodb://${STACK}__hearth:${HEARTH_MONGODB_PASSWORD}@mongo1/${STACK}__hearth-dev?replicaSet=rs0
@@ -471,7 +471,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PRIVATE_KEY_PATH=/run/secrets/jwt-private-key.{{STACK}}.{{ts}}
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - LOGIN_URL=https://login.${STACK}.{{hostname}}
@@ -523,7 +523,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - RECORD_SEARCH_QUOTA=2000
       - MINIO_BUCKET=${STACK}--ocrvs
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
@@ -559,7 +559,7 @@ services:
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
       - REDIS_HOST=redis.${STACK}_app_net
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - MONGO_URL=mongodb://${STACK}__webhooks:${WEBHOOKS_MONGODB_PASSWORD}@mongo1/${STACK}__webhooks?replicaSet=rs0
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - AUTH_URL=http://auth.{{STACK}}_app_net:4040
@@ -607,7 +607,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - SENTRY_DSN=${SENTRY_DSN:-}
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - MONGO_URL=mongodb://${STACK}__config:${CONFIG_MONGODB_PASSWORD}@mongo1/${STACK}__application-config?replicaSet=rs0
       - LOGIN_URL=https://login.${STACK}.{{hostname}}
@@ -669,7 +669,7 @@ services:
       - QA_ENV=true
       - HOST=0.0.0.0
       - NODE_ENV=production
-      - APN_SERVICE_URL=http://apm-server:8200
+      - APN_SERVICE_URL=http://dependencies_apm-server:8200
       - CERT_PUBLIC_KEY_PATH=/run/secrets/jwt-public-key.{{STACK}}.{{ts}}
       - MINIO_ACCESS_KEY=${MINIO_ROOT_USER}
       - MINIO_SECRET_KEY=${MINIO_ROOT_PASSWORD}

@@ -6,6 +6,7 @@
 # & Healthcare Disclaimer located at http://opencrvs.org/license.
 #
 # Copyright (C) The OpenCRVS Authors located at https://github.com/opencrvs/opencrvs-core/blob/master/AUTHORS.
+#!/bin/bash
 set -e
 
 BASEDIR=$(dirname $(realpath $0))
@@ -216,57 +217,6 @@ rotate_secrets() {
   configured_ssh '/opt/opencrvs/$STACK/infrastructure/rotate-secrets.sh '$files_to_rotate' | tee -a '$LOG_LOCATION'/rotate-secrets.log'
 }
 
-
-# Takes in a space separated string of docker-compose.yml files
-# returns a new line separated list of images defined in those files
-# This function gets a clean list of images and substitutes environment variables
-# So that we have a clean list to download
-get_docker_tags_from_compose_files() {
-   COMPOSE_FILES=$1
-
-   SPACE_SEPARATED_COMPOSE_FILE_LIST=$(printf " %s" "${COMPOSE_FILES[@]}")
-   SPACE_SEPARATED_COMPOSE_FILE_LIST=${SPACE_SEPARATED_COMPOSE_FILE_LIST:1}
-
-   IMAGE_TAG_LIST=$(cat $SPACE_SEPARATED_COMPOSE_FILE_LIST \
-   `# Select rows with the image tag` \
-   | grep image: \
-   `# Ignore the baseimage file as its not used directly` \
-   | grep -v ocrvs-base \
-   `# Only keep the image version` \
-   | sed "s/image://")
-
-   # SOME_VARIABLE:-some-default VERSION:-latest
-   IMAGE_TAGS_WITH_VARIABLE_SUBSTITUTIONS_WITH_DEFAULTS=$(echo $IMAGE_TAG_LIST \
-   `# Matches variables with default values like VERSION:-latest` \
-   | grep -o "[A-Za-z_0-9]\+:-[A-Za-z_0-9.-]\+" \
-   | sort --unique)
-
-   # This reads Docker image tag definitions with a variable substitution
-   # and defines the environment variables with the defaults unles the variable is already present.
-   # Done as a preprosessing step for envsubs
-   for VARIABLE_NAME_WITH_DEFAULT_VALUE in ${IMAGE_TAGS_WITH_VARIABLE_SUBSTITUTIONS_WITH_DEFAULTS[@]}; do
-      IFS=':' read -r -a variable_and_default <<< "$VARIABLE_NAME_WITH_DEFAULT_VALUE"
-      VARIABLE_NAME="${variable_and_default[0]}"
-      # Read default value and remove the leading hyphen
-      DEFAULT_VALUE=$(echo ${variable_and_default[1]} | sed "s/^-//")
-      CURRENT_VALUE=$(echo "${!VARIABLE_NAME}")
-
-      if [ -z "${!VARIABLE_NAME}" ]; then
-         IMAGE_TAG_LIST=$(echo $IMAGE_TAG_LIST | sed "s/\${$VARIABLE_NAME:-$DEFAULT_VALUE}/$DEFAULT_VALUE/g")
-      else
-         IMAGE_TAG_LIST=$(echo $IMAGE_TAG_LIST | sed "s/\${$VARIABLE_NAME:-$DEFAULT_VALUE}/$CURRENT_VALUE/g")
-      fi
-   done
-
-   IMAGE_TAG_LIST_WITHOUT_VARIABLE_SUBSTITUTION_DEFAULT_VALUES=$(echo $IMAGE_TAG_LIST \
-   | sed -E "s/:-[A-Za-z_0-9]+//g" \
-   | sed -E "s/[{}]//g")
-
-   echo $IMAGE_TAG_LIST_WITHOUT_VARIABLE_SUBSTITUTION_DEFAULT_VALUES \
-   | envsubst \
-   | sed 's/ /\n/g'
-}
-
 split_and_join() {
    separator_for_splitting=$1
    separator_for_joining=$2
@@ -276,54 +226,6 @@ split_and_join() {
 }
 
 docker_stack_deploy() {
-  echo "Deploying this environment: $ENVIRONMENT_COMPOSE"
-
-  if [ "$UPDATE_DEPENDENCIES" = false ]; then
-    echo "Pulling all docker images. This might take a while"
-
-    EXISTING_IMAGES=$(configured_ssh "docker images --format '{{.Repository}}:{{.Tag}}'")
-    IMAGE_TAGS_TO_DOWNLOAD=$(get_docker_tags_from_compose_files "$COMPOSE_FILES_USED")
-
-    for tag in ${IMAGE_TAGS_TO_DOWNLOAD[@]}; do
-      if [[ $EXISTING_IMAGES == *"$tag"* ]]; then
-        echo "$tag already exists on the machine. Skipping..."
-        continue
-      fi
-
-      echo "Downloading $tag"
-
-      until configured_ssh "cd /opt/opencrvs && docker pull $tag"
-      do
-        echo "Server failed to download $tag. Retrying..."
-        sleep 5
-      done &
-    done
-
-    wait
-  else
-    echo "Pulling all docker images. This might take a while"
-
-    EXISTING_IMAGES=$(configured_ssh "docker images --format '{{.Repository}}:{{.Tag}}'")
-    IMAGE_TAGS_TO_DOWNLOAD=$(get_docker_tags_from_compose_files "$DEPENDENCY_COMPOSE_FILES")
-
-    for tag in ${IMAGE_TAGS_TO_DOWNLOAD[@]}; do
-      if [[ $EXISTING_IMAGES == *"$tag"* ]]; then
-        echo "$tag already exists on the machine. Skipping..."
-        continue
-      fi
-
-      echo "Downloading $tag"
-
-      until configured_ssh "cd /opt/opencrvs && docker pull $tag"
-      do
-        echo "Server failed to download $tag. Retrying..."
-        sleep 5
-      done &
-    done
-
-    wait
-  fi
-
   echo "Updating docker swarm stack with new compose files"
 
   EXISTING_STACKS=$(configured_ssh 'docker stack ls --format "{{ .Name }}" | grep -v "dependencies" | paste -sd "," -')
