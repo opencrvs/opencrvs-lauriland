@@ -263,6 +263,7 @@ export PERFORMANCE_MONGODB_PASSWORD=`generate_password`
 export OPENHIM_MONGODB_PASSWORD=`generate_password`
 export WEBHOOKS_MONGODB_PASSWORD=`generate_password`
 export NOTIFICATION_MONGODB_PASSWORD=`generate_password`
+export EVENTS_MONGODB_PASSWORD=`generate_password`
 
 #
 # Elasticsearch credentials

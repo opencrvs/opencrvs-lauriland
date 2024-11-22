@@ -167,6 +167,28 @@ else
 EOF
 fi
 
+EVENTS_USER=$(echo $(checkIfUserExists "${DATABASE_PREFIX}__events" "${DATABASE_PREFIX}__events"))
+if [[ $EVENTS_USER != "FOUND" ]]; then
+  echo "events user not found"
+  mongo $(mongo_credentials) --host $HOST <<EOF
+  use ${DATABASE_PREFIX}__events
+  db.createUser({
+    user: '${DATABASE_PREFIX}__events',
+    pwd: '$EVENTS_MONGODB_PASSWORD',
+    roles: [{ role: 'readWrite', db: "${DATABASE_PREFIX}__events" }]
+  })
+EOF
+else
+  echo "events user exists"
+  mongo $(mongo_credentials) --host $HOST <<EOF
+  use ${DATABASE_PREFIX}__events
+  db.updateUser('${DATABASE_PREFIX}__events', {
+    pwd: '$EVENTS_MONGODB_PASSWORD',
+    roles: [{ role: 'readWrite', db: "${DATABASE_PREFIX}__events" }]
+  })
+EOF
+fi
+
 OPENHIM_USER=$(echo $(checkIfUserExists "${DATABASE_PREFIX}__openhim" "${DATABASE_PREFIX}__openhim-dev"))
 if [[ $OPENHIM_USER != "FOUND" ]]; then
   echo "openhim user not found"

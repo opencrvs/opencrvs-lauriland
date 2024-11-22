@@ -217,6 +217,7 @@ services:
       - HOST=0.0.0.0
       - NODE_ENV=production
       - LANGUAGES=en,fr
+      - EVENTS_URL=http://events:5555/
       - SENTRY_DSN=${SENTRY_DSN:-}
       - DISABLE_RATE_LIMIT=true
       - REDIS_HOST=redis.${STACK}_app_net
@@ -270,6 +271,11 @@ services:
         aliases: []
       dependencies_minio_net:
         aliases: []
+  events:
+    image: opencrvs/ocrvs-events:${VERSION}
+    restart: unless-stopped
+    environment:
+      - MONGO_URL=mongodb://${STACK}__events:${METRICS_MONGODB_PASSWORD}@mongo1/${STACK}__events?replicaSet=rs0
 
   workflow:
     image: opencrvs/ocrvs-workflow:${VERSION}
