@@ -114,7 +114,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always() && steps.check-specs.outputs.has_spec_files == 'true'
         with:
-          name: playwright-report-${{ matrix.test_dir }}
+          name: playwright-report-${{ github.event.client_payload.stack || github.event.inputs.stack }}-${{ matrix.test_dir }}
           path: playwright-report/
           retention-days: 30
 
