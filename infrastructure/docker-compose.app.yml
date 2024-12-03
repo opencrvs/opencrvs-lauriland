@@ -177,6 +177,7 @@ services:
       - CONTENT_SECURITY_POLICY_WILDCARD=${CONTENT_SECURITY_POLICY_WILDCARD}
       - MINIO_URL=https://minio.{{hostname}}
       - COUNTRY_CONFIG_URL_INTERNAL=http://countryconfig.{{STACK}}_app_net:3040
+      - GATEWAY_URL_INTERNAL=http://gateway.{{STACK}}_app_net:7070
     deploy:
       labels:
         - 'traefik.enable=true'
