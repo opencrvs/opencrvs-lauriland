@@ -276,7 +276,8 @@ services:
     image: opencrvs/ocrvs-events:${VERSION}
     restart: unless-stopped
     environment:
-      - MONGO_URL=mongodb://${STACK}__events:${METRICS_MONGODB_PASSWORD}@mongo1/${STACK}__events?replicaSet=rs0
+      - EVENTS_MONGO_URL=mongodb://${STACK}__events:${EVENTS_MONGODB_PASSWORD}@mongo1/${STACK}__events?replicaSet=rs0
+      - USER_MGNT_MONGO_URL=mongodb://${STACK}__user-mgnt:${USER_MGNT_MONGODB_PASSWORD}@mongo1/${STACK}__user-mgnt?replicaSet=rs0
 
   workflow:
     image: opencrvs/ocrvs-workflow:${VERSION}
