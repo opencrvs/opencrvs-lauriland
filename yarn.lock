@@ -2122,19 +2122,19 @@
   integrity sha512-aWw2YTtAdT7CskFyxEX2K21/zSDStuf/ikI3yBqmwpwJF0pS+/IX5DWv+1UFffZIbruP6cnT9/LAJV1gFwAT1A==
 
 "@types/libsodium-wrappers@^0.7.10":
-  version "0.7.13"
-  resolved "https://registry.yarnpkg.com/@types/libsodium-wrappers/-/libsodium-wrappers-0.7.13.tgz#769c4ea01de96bb297207586a70777ebf066dcb4"
-  integrity sha512-KeAKtlObirLJk/na6jHBFEdTDjDfFS6Vcr0eG2FjiHKn3Nw8axJFfIu0Y9TpwaauRldQBj/pZm/MHtK76r6OWg==
+  version "0.7.14"
+  resolved "https://registry.yarnpkg.com/@types/libsodium-wrappers/-/libsodium-wrappers-0.7.14.tgz#f688f8d44e46ed61c401f82ff757581655fbcc42"
+  integrity sha512-5Kv68fXuXK0iDuUir1WPGw2R9fOZUlYlSAa0ztMcL0s0BfIDTqg9GXz8K30VJpPP3sxWhbolnQma2x+/TfkzDQ==
 
 "@types/lodash@^4.14.117":
-  version "4.14.200"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.200.tgz#435b6035c7eba9cdf1e039af8212c9e9281e7149"
-  integrity sha512-YI/M/4HRImtNf3pJgbF+W6FrXovqj+T+/HpENLTooK9PnkacBsDpeP3IpHab40CClUfhNmdM2WTNP2sa2dni5Q==
+  version "4.17.23"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.23.tgz#c1bb06db218acc8fc232da0447473fc2fb9d9841"
+  integrity sha512-RDvF6wTulMPjrNdCoYRC8gNR880JNGT8uB+REUpC2Ns4pRqQJhGz90wh7rgdXDPpCczF3VGktDuFGVnz8zP7HA==
 
 "@types/mime-db@*":
-  version "1.43.3"
-  resolved "https://registry.yarnpkg.com/@types/mime-db/-/mime-db-1.43.3.tgz#f7bec64a9a62ddded3371e82862c0516539710e8"
-  integrity sha512-vg0UsF1p1Qi/8iCARoie7F/Ng92zo7tQlL+sqE15GonkKVl55n/0vB6jSbrYTgDO0PSx9pKfGG1iZg9gJum3wA==
+  version "1.43.6"
+  resolved "https://registry.yarnpkg.com/@types/mime-db/-/mime-db-1.43.6.tgz#8a5bedb35fe0fccac46a939d4520490f1bbc4668"
+  integrity sha512-r2cqxAt/Eo5yWBOQie1lyM1JZFCiORa5xtLlhSZI0w8RJggBPKw8c4g/fgQCzWydaDR5bL4imnmix2d1n52iBw==
 
 "@types/minimist@^1.2.5":
   version "1.2.5"
