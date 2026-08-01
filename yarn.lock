@@ -2022,9 +2022,9 @@
   integrity sha512-uK2z1ZHJyC0nQRbuovXFt4mzXDwf27vQeUWNhfKGwRcWW429GOhP8HxUHlM6TLH4bzmlv/HlEjpvJh3JfmGsAA==
 
 "@types/google-libphonenumber@^7.4.23":
-  version "7.4.29"
-  resolved "https://registry.yarnpkg.com/@types/google-libphonenumber/-/google-libphonenumber-7.4.29.tgz#161545a4168c85b768e32154019fbaa4d95af6f4"
-  integrity sha512-TT2y23IbEQ+RzmFNvJGIEf/uXmGwRaztKWYv471KzblNFP6qLh8hKKTQY63tIhQFYL1+YvWS+OB17zo42gf2aA==
+  version "7.4.31"
+  resolved "https://registry.yarnpkg.com/@types/google-libphonenumber/-/google-libphonenumber-7.4.31.tgz#8fa6382b21821452778ec9cba116107d770760ee"
+  integrity sha512-NqtRPbLfRbCsqYTVb2UHM67AhMUfTYarxy32u14QilQq7i2C37jtvxbEmb0U0oCMMZtFfpoAtbuhrXwF7/EyVg==
 
 "@types/handlebars@^4.1.0":
   version "4.1.0"
